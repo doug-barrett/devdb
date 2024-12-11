@@ -1,0 +1,14 @@
+fileVersion: 1
+id: "12"
+mappingDefinitions:
+  DWH:
+    database: doug_db_prod
+    schema: dwh
+  SRC:
+    database: samples
+    schema: tpch
+  STAGE:
+    database: doug_db_prod
+    schema: stage
+name: System Test
+type: Environment

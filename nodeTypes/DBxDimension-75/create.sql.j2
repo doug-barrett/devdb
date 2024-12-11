@@ -62,7 +62,7 @@ does not permit copying or modification for any other purpose.
             {% if col.isSurrogateKey or col.isSystemUpdateDate or col.isSystemCreateDate %}
                 NULL
             {% else %}
-                {{ get_source_transform(col) }}
+                {{ get_source_transform_dbx(col) }}
             {% endif %}
             AS `{{ col.name }}`
             {%- if not loop.last -%}, {% endif %}

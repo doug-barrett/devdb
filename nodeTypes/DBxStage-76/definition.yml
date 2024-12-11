@@ -1,12 +1,11 @@
 fileVersion: 1
-id: Stage
-isDisabled: true
+id: "76"
+isDisabled: false
 metadata:
   defaultStorageLocation: STAGE
   error: null
   nodeMetadataSpec: |
-
-    capitalized: Stage
+    capitalized: Databricks Stage
     short: stg
     plural: Stages
     tagColor: '#2EB67D'
@@ -59,5 +58,5 @@ metadata:
         type: textBox
         syntax: sql
         isRequired: false
-name: Stage
+name: DBx Stage
 type: NodeType
