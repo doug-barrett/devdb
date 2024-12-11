@@ -56,7 +56,7 @@ operation:
           - columnReferences:
               - columnCounter: 103be586-3f20-483e-b1fa-e52a7269d2ee
                 stepCounter: f7eec55b-ffb8-4e4f-ad20-c0dc9d1c9357
-            transform: ""
+            transform: UPPER("customer"."c_name")
       - appliedColumnTests:
           hasNull: false
           isDistinct: false
@@ -72,7 +72,7 @@ operation:
           - columnReferences:
               - columnCounter: bd8febd0-f267-4dea-aa49-9693558357b1
                 stepCounter: f7eec55b-ffb8-4e4f-ad20-c0dc9d1c9357
-            transform: ""
+            transform: UPPER("customer"."c_address")
       - appliedColumnTests:
           hasNull: false
           isDistinct: false
@@ -104,7 +104,7 @@ operation:
           - columnReferences:
               - columnCounter: b1f3197e-29ff-4c8c-887f-1234fce64e46
                 stepCounter: f7eec55b-ffb8-4e4f-ad20-c0dc9d1c9357
-            transform: ""
+            transform: UPPER("customer"."c_phone")
       - appliedColumnTests:
           hasNull: false
           isDistinct: false
@@ -228,6 +228,35 @@ operation:
               - columnCounter: d6d38b7e-0f8d-47eb-8ea9-06e13e5df0f3
                 stepCounter: 0d77d644-c76d-4458-8051-00c6d255b94d
             transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5163ed62-a74a-4441-9da4-3bdc2dcaeae6
+          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        hashDetails:
+          hashAlgorithm: SHA1
+        hashedColumns:
+          - columnCounter: f2232aeb-d161-4e2a-af62-eb3fca0bceec
+            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          - columnCounter: 18bc57c7-cf92-487b-ba09-c1bd08d22ca5
+            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          - columnCounter: 8b75cde5-7416-4aaa-899b-80e0f554c37e
+            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          - columnCounter: 928ddf3b-d4d4-4d57-8ebd-30f6d545a25b
+            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          - columnCounter: 8f8372b4-f205-4baf-ba67-0acc25dfdfba
+            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          - columnCounter: 2a8ec892-1c15-40a1-bb84-e28fc1b3495a
+            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+        name: customer_hash
+        nullable: true
+        sourceColumnReferences: []
     cteString: ""
     enabledColumnTestIDs:
       - hasNull

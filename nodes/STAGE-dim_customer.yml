@@ -132,7 +132,6 @@ operation:
         config: {}
         dataType: STRING
         description: ""
-        isChangeTracking: true
         name: c_acctbal_cat
         nullable: true
         sourceColumnReferences:
@@ -222,6 +221,24 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 18bc57c7-cf92-487b-ba09-c1bd08d22ca5
+                stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+            transform: ""
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c0430bc8-699d-428c-a355-9f652fb573bd
+          stepCounter: f6199cb1-b042-4588-b0d6-2ecd1435759f
+        config: {}
+        dataType: STRING
+        description: ""
+        isChangeTracking: true
+        name: customer_hash
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5163ed62-a74a-4441-9da4-3bdc2dcaeae6
                 stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
             transform: ""
       - acceptedValues:

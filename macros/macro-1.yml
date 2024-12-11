@@ -228,7 +228,7 @@ macroString: |+
 
   {%- macro get_source_transform_dbx(col) -%}
      {% if col.hashDetails %}
-        {{ hash(col.hashDetails.columns, algo=col.hashDetails.algorithm, datatype=col.dataType) }}
+        {{ hash(col.hashDetails.columns, algo=col.hashDetails.algorithm, datatype=col.dataType) | replace('VARCHAR)', 'STRING)')}}
      {% elif col.transform | trim != '' %}
         {{ col.transform | replace('"', '`')}}
      {% elif col.sourceColumns[0].node and col.sourceColumns[0].node.name and col.sourceColumns[0].column and col.sourceColumns[0].column.name %}

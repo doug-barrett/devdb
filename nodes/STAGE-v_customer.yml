@@ -212,6 +212,23 @@ operation:
               - columnCounter: 58a0437d-7c49-4dc7-8f09-f9c54b73e12e
                 stepCounter: f6199cb1-b042-4588-b0d6-2ecd1435759f
             transform: ""
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 74aaedd2-87ca-4212-8fbe-6caf4ef849de
+          stepCounter: 8392ab86-af81-441d-b782-05fc7795836e
+        config: {}
+        dataType: STRING
+        description: ""
+        name: customer_hash
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c0430bc8-699d-428c-a355-9f652fb573bd
+                stepCounter: f6199cb1-b042-4588-b0d6-2ecd1435759f
+            transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 262cf256-7521-4412-9565-102f66c2a77f
