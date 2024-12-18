@@ -1,11 +1,11 @@
 fileVersion: 1
-id: View
-isDisabled: true
+id: "80"
+isDisabled: false
 metadata:
   defaultStorageLocation: USER_ACCESS
   error: null
   nodeMetadataSpec: |
-    capitalized: View
+    capitalized: DBx View
     short: v
     tagColor: '#C4C4C4'
     isDisabled: true
@@ -55,5 +55,5 @@ metadata:
           options:
           - view
           isRequired: false
-name: View
+name: DBx View
 type: NodeType

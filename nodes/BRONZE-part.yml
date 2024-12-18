@@ -1,0 +1,173 @@
+fileVersion: 1
+id: 02818410-8933-45c5-9ec3-16232dd6c0b1
+name: part
+operation:
+  database: ""
+  dataset: ""
+  deployEnabled: true
+  description: ""
+  locationName: BRONZE
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9d4fdf8f-6e10-44c7-bf76-8c92eca3e843
+          stepCounter: 02818410-8933-45c5-9ec3-16232dd6c0b1
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: p_partkey
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 99e75123-beb4-44ed-9030-6871b80128dd
+          stepCounter: 02818410-8933-45c5-9ec3-16232dd6c0b1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: p_name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6c84675a-3dea-4ab8-b8b9-5869fc67f7cd
+          stepCounter: 02818410-8933-45c5-9ec3-16232dd6c0b1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: p_mfgr
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c8976052-0028-43b4-b0fe-71aeee3f0267
+          stepCounter: 02818410-8933-45c5-9ec3-16232dd6c0b1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: p_brand
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c881c97c-4998-415f-bf26-8e184505c3c4
+          stepCounter: 02818410-8933-45c5-9ec3-16232dd6c0b1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: p_type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3e5d605e-f15d-43a8-ae94-228e78fc3972
+          stepCounter: 02818410-8933-45c5-9ec3-16232dd6c0b1
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: p_size
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7d88faf1-b24b-4320-acee-2e9c5f4f976f
+          stepCounter: 02818410-8933-45c5-9ec3-16232dd6c0b1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: p_container
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4d12c4a4-7cf5-4bf0-a38b-7297c478d5f9
+          stepCounter: 02818410-8933-45c5-9ec3-16232dd6c0b1
+        config: {}
+        dataType: DECIMAL
+        defaultValue: ""
+        description: ""
+        name: p_retailprice
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2af39d0f-7ec0-4f72-8075-ac231ea7601b
+          stepCounter: 02818410-8933-45c5-9ec3-16232dd6c0b1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: p_comment
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+    join:
+      joinCondition: FROM {{ ref('BRONZE', 'part') }}
+  name: part
+  schema: ""
+  sqlType: Source
+  table: part
+  type: sourceInput
+  version: 1
+type: Node

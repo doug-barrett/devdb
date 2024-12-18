@@ -128,8 +128,8 @@ CREATE OR REFRESH {{config.DLTtype}}
     {%if config.readfiles == true%} * 
     {%else%}
     {% for col in sources[0].columns %}
-            {{ get_source_transform(col) }} AS `{{ col.name }}`
-            {%- if not loop.last -%}, {% endif %}
+            {{ get_source_transform_dbx(col) }} AS `{{ col.name }}`
+            {%- if not loop.last -%}, {%- endif -%}
     {% endfor %}
     {%-endif%} 
     FROM {%if config.DLTtype == 'STREAMING TABLE'%} STREAM {%endif%}    

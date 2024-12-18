@@ -58,23 +58,23 @@ does not permit copying or modification for any other purpose.
             {%- if config.selectDistinct %}
             DISTINCT
             {%- endif %}
-            {%- for col in source.columns if not col.isSurrogateKey %}
-                {%- if col.isSystemVersion %}
+            {% for col in source.columns if not col.isSurrogateKey %}
+                {%- if col.isSystemVersion -%}
                     1
-                {%- elif col.isSystemCurrentFlag %}
+                {%- elif col.isSystemCurrentFlag -%}
                     'Y'
-                {%- else %}
-                   {{ get_source_transform(col) }}
-                {%- endif %} AS `{{ col.name }}`,
-            {%- endfor %}
-                'INSERT_INITIAL_VERSION_ROWS' AS `DML_OPERATION`
+                {%- else -%}
+                   {{ get_source_transform_dbx(col) }}
+                {%- endif %}  AS `{{ col.name }}`,
+            {% endfor %}
+                'INSERT_INITIAL_VERSION_ROWS' AS `DML_OPERAT ION`
             {{  get_clause(joinclause,'from')  }}
             LEFT JOIN {{ ref_no_link(node.location.name, node.name) }} `DIM` ON
             {%- for col in source.columns if col.isBusinessKey -%}
                 {%- if not loop.first %}
                     AND
                 {%- endif %}
-                    {{ get_source_transform(col) }} = `DIM`.`{{ col.name }}`
+                    {{ get_source_transform_dbx(col) }} = `DIM`.`{{ col.name }}`
             {%- endfor %}
             WHERE
             {%- for col in source.columns if col.isBusinessKey -%}
@@ -103,7 +103,7 @@ does not permit copying or modification for any other purpose.
                 {%- elif col.isSystemCurrentFlag %}
                     'Y'
                 {%- else %}
-                   {{ get_source_transform(col)  | replace('"', '`')  }}
+                   {{ get_source_transform_dbx(col)  | replace('"', '`')  }}
                 {%- endif %}  AS `{{ col.name }}`,
             {%- endfor %}
                 'INSERT_NEW_VERSION_ROWS' AS `DML_OPERATION`
@@ -113,7 +113,7 @@ does not permit copying or modification for any other purpose.
                 {%- if not loop.first %}
                     AND
                 {%- endif %}
-                {{ get_source_transform(col)  | replace('"', '`')  }} = `DIM`.`{{ col.name }}`
+                {{ get_source_transform_dbx(col)  | replace('"', '`')  }} = `DIM`.`{{ col.name }}`
             {%- endfor %}
             WHERE `DIM`.`{{ get_value_by_column_attribute("isSystemCurrentFlag") }}` = 'Y'
             {%- for col in source.columns if (col.isChangeTracking == true) %}
@@ -122,7 +122,7 @@ does not permit copying or modification for any other purpose.
                 {%- else %}
                     OR
                 {%- endif %}
-                ( NVL( CAST({{ get_source_transform(col)  | replace('"', '`') }} as STRING), '**NULL**') <> NVL( CAST(`DIM`.`{{ col.name }}` as STRING), '**NULL**') )
+                ( NVL( CAST({{ get_source_transform_dbx(col)  | replace('"', '`') }} as STRING), '**NULL**') <> NVL( CAST(`DIM`.`{{ col.name }}` as STRING), '**NULL**') )
                 {%- if loop.last %}
                     )
                 {%- endif %}
@@ -157,7 +157,7 @@ does not permit copying or modification for any other purpose.
                 {%- if not loop.first %}
                     AND
                 {%- endif %}
-                {{ get_source_transform(col)  | replace('"', '`') }} = `DIM`.`{{ col.name }}`
+                {{ get_source_transform_dbx(col)  | replace('"', '`') }} = `DIM`.`{{ col.name }}`
             {%- endfor %}
             WHERE `DIM`.`{{ get_value_by_column_attribute("isSystemCurrentFlag") }}` = 'Y'
             {%- for col in source.columns if (col.isChangeTracking == true) %}
@@ -166,7 +166,7 @@ does not permit copying or modification for any other purpose.
                 {%- else %}
                     OR
                 {%- endif %}
-                ( NVL( CAST({{ get_source_transform(col)  | replace('"', '`') }} as STRING), '**NULL**') <> NVL( CAST(`DIM`.`{{ col.name }}` as STRING), '**NULL**') )
+                ( NVL( CAST({{ get_source_transform_dbx(col)  | replace('"', '`') }} as STRING), '**NULL**') <> NVL( CAST(`DIM`.`{{ col.name }}` as STRING), '**NULL**') )
                 {%- if loop.last %}
                     )
                 {%- endif %}
@@ -206,7 +206,7 @@ does not permit copying or modification for any other purpose.
                   {%- elif col.isSystemCurrentFlag %}
                       'Y'
                   {%- else %}
-                      {{ get_source_transform(col)  | replace('"', '`')  }}
+                      {{ get_source_transform_dbx(col)  | replace('"', '`')  }}
                   {%- endif %}   AS `{{ col.name }}`,
               {%- endfor -%}
                   'UPDATE_NON_TYPE2_ROWS' AS `DML_OPERATION`
@@ -216,7 +216,7 @@ does not permit copying or modification for any other purpose.
                   {%- if not loop.first %}
                       AND
                   {%- endif %}
-                  {{ get_source_transform(col) | replace('"', '`') }} = `DIM`.`{{ col.name }}`
+                  {{ get_source_transform_dbx(col) | replace('"', '`') }} = `DIM`.`{{ col.name }}`
               {%- endfor %}
               WHERE `DIM`.`{{ get_value_by_column_attribute("isSystemCurrentFlag") }}` = 'Y'
               AND (
@@ -224,7 +224,7 @@ does not permit copying or modification for any other purpose.
                   {%- if not loop.first %}
                       AND
                   {%- endif %}
-                  {{ get_source_transform(col)  | replace('"', '`') }} = `DIM`.`{{ col.name }}`
+                  {{ get_source_transform_dbx(col)  | replace('"', '`') }} = `DIM`.`{{ col.name }}`
               {%- endfor %} )
               
               {%- for col in source.columns if not (   col.isBusinessKey or
@@ -242,7 +242,7 @@ does not permit copying or modification for any other purpose.
                   {%- if not loop.first %}
                       OR
                   {%- endif %}
-                  NVL( CAST({{ get_source_transform(col)  | replace('"', '`') }} as STRING), '**NULL**') <> NVL( CAST(`DIM`.`{{ col.name }}` as STRING), '**NULL**')
+                  NVL( CAST({{ get_source_transform_dbx(col)  | replace('"', '`') }} as STRING), '**NULL**') <> NVL( CAST(`DIM`.`{{ col.name }}` as STRING), '**NULL**')
                   {%- if loop.last %}
                       )
                   {%- endif %}
@@ -300,14 +300,14 @@ does not permit copying or modification for any other purpose.
                 DISTINCT
                 {%- endif %}
                 {% for col in source.columns if not col.isSurrogateKey %}
-                    {%- if col.isSystemVersion -%}
+                    {% if col.isSystemVersion %}
                         1
                     {%- elif col.isSystemCurrentFlag -%}
                         'Y'
                     {%- else -%}
-                        {{ get_source_transform(col)  | replace('"', '`') }}
-                    {%- endif -%} AS `{{ col.name }}`
-                    {%- if not loop.last %}, {%- endif -%}
+                        {{ get_source_transform_dbx(col) }}
+                    {%- endif %} AS `{{ col.name }}`
+                    {%- if not loop.last -%}, {%- endif -%}
                 {% endfor %}
                 {{ source.join }}
                  {%- if config.groupByAll -%}

@@ -166,5 +166,5 @@ metadata:
         isRequired: false
         enableIf: "{% if config.constraints %} true {% else %} false {% endif %}"
 
-name: Delta Live Table
+name: DBx Delta Live Table
 type: NodeType

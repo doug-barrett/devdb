@@ -6,41 +6,22 @@ Coalesce permits you to copy and modify this script for the purposes of using wi
 does not permit copying or modification for any other purpose.
 #}
 {# == Node Type Version        : 1  == #}
-{# == Node Type Name           : Stage  == #}
-{# == Node Type Description    : This node creates stage table,view and also override create sql for view  == #}
+{# == Node Type Name           : View  == #}
+{# == Node Type Description    : This node creates a view and also runs override create sql for view  == #}
 
 
 {# Override CreateSQL for view #}
+
 
 {% if node.override.create.enabled %}
 
     {{ node.override.create.script }}
 
-{% elif node.materializationType == 'table' %}
-    {{ stage('Create Stage Table') }}
+{% else %}
 
-{# CreateSQL for Table #}
+{# CreateSQL for view #}
 
-    CREATE OR REPLACE TABLE {{ ref_no_link(node.location.name, node.name) }}
-    (
-        {% for col in columns %}
-            `{{ col.name }}` {{ col.dataType }}
-            {%- if not col.nullable %} NOT NULL
-            {% endif %}
-            {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
-            {%- if not loop.last -%}, {% endif %}
-        {% endfor %}
-    )
-    {%- if node.description | length > 0 %} COMMENT  '{{ node.description | escape }}'{% endif %}
-    TBLPROPERTIES('delta.columnMapping.mode' = 'name')
-
-
-{% elif node.materializationType == 'view' %}
-    {{ stage('Create Stage View') }}
-
-
-{# CreateSQL for View #}
-
+    {{ stage('Create View') }}
     CREATE OR REPLACE VIEW {{ ref_no_link(node.location.name, node.name) }}
     (
         {% for col in columns %}
@@ -49,22 +30,17 @@ does not permit copying or modification for any other purpose.
             {%- if not loop.last -%}, {% endif %}
         {% endfor %}
     )
-    {%- if node.description | length > 0 %} COMMENT = '{{ node.description | escape }}'{% endif %}
+    {%- if node.description | length > 0 %} COMMENT  '{{ node.description | escape }}'{% endif %}
     AS
     {% for source in sources %}
-        SELECT
-        {% if config.selectDistinct %}
-        DISTINCT
-        {% endif %}
+        SELECT {% if config.selectDistinct %} DISTINCT {% endif %}
         {% for col in source.columns %}
             {{ get_source_transform_dbx(col) }} AS `{{ col.name }}`
             {%- if not loop.last -%}, {% endif %}
         {% endfor %}
 
         {{ source.join }}
-        {% if config.groupByAll %}
-           Group By All
-        {% endif %}
+        {% if config.groupByAll %} GROUP BY ALL {% endif %}
         {% if not loop.last %}
             {% if config.insertStrategy in ['UNION', 'UNION ALL'] %}
                 {{ config.insertStrategy }}
@@ -73,5 +49,4 @@ does not permit copying or modification for any other purpose.
             {% endif %}
         {% endif %}
     {% endfor %}
-
 {% endif %}

@@ -225,7 +225,7 @@ macroString: |-
   {#-- Input parmeters   - column #}
   {#-- Return            - DBx compatible column references #}
 
-  {%- macro get_source_transform(col) -%}
+  {%- macro get_source_transform_dbx(col) -%}
      {%- if col.hashDetails -%}
         {{ hash(col.hashDetails.columns, algo=col.hashDetails.algorithm, datatype=col.dataType) | replace('"', '`') | replace('VARCHAR)', 'STRING)')}}
      {%- elif col.transform | trim != '' -%}
