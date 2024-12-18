@@ -1,14 +1,17 @@
 fileVersion: 1
 id: "12"
 mappingDefinitions:
-  DWH:
-    database: doug_db_prod
-    schema: dwh
-  SRC:
+  BRONZE:
     database: samples
     schema: tpch
-  STAGE:
-    database: doug_db_prod
-    schema: stage
+  GOLD:
+    database: doug_db_test
+    schema: gold
+  SILVER:
+    database: doug_db_test
+    schema: silver
+  USER_ACCESS:
+    database: doug_db_test
+    schema: access
 name: System Test
 type: Environment

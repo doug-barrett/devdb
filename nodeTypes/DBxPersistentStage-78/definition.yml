@@ -2,7 +2,7 @@ fileVersion: 1
 id: "78"
 isDisabled: false
 metadata:
-  defaultStorageLocation: STAGE
+  defaultStorageLocation: SILVER
   error: null
   nodeMetadataSpec: |
     capitalized: Databricks Persistent Stage

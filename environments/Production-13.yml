@@ -1,14 +1,17 @@
 fileVersion: 1
 id: "13"
 mappingDefinitions:
-  DWH:
-    database: doug_db_prod
-    schema: dwh
-  SRC:
+  BRONZE:
     database: samples
     schema: tpch
-  STAGE:
+  GOLD:
     database: doug_db_prod
-    schema: stage
+    schema: gold
+  SILVER:
+    database: doug_db_prod
+    schema: silver
+  USER_ACCESS:
+    database: doug_db_prod
+    schema: access
 name: Production
 type: Environment

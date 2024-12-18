@@ -1,6 +1,6 @@
 fileVersion: 1
 id: "1"
-macroString: |+
+macroString: |-
   {#-- ************************************************************************************************* #}
   {#-- Utility Macros #}
   {#-- ************************************************************************************************* #}
@@ -221,22 +221,20 @@ macroString: |+
      
   {%- endmacro -%}
 
-
   {#-- This macro will use back ticks for column references - and replace errant double quotes around columns #}
   {#-- Input parmeters   - column #}
   {#-- Return            - DBx compatible column references #}
 
-  {%- macro get_source_transform_dbx(col) -%}
-     {% if col.hashDetails %}
-        {{ hash(col.hashDetails.columns, algo=col.hashDetails.algorithm, datatype=col.dataType) | replace('VARCHAR)', 'STRING)')}}
-     {% elif col.transform | trim != '' %}
+  {%- macro get_source_transform(col) -%}
+     {%- if col.hashDetails -%}
+        {{ hash(col.hashDetails.columns, algo=col.hashDetails.algorithm, datatype=col.dataType) | replace('"', '`') | replace('VARCHAR)', 'STRING)')}}
+     {%- elif col.transform | trim != '' -%}
         {{ col.transform | replace('"', '`')}}
-     {% elif col.sourceColumns[0].node and col.sourceColumns[0].node.name and col.sourceColumns[0].column and col.sourceColumns[0].column.name %}
+     {%- elif col.sourceColumns[0].node and col.sourceColumns[0].node.name and col.sourceColumns[0].column and col.sourceColumns[0].column.name -%}
         `{{ col.sourceColumns[0].node.name }}`.`{{ col.sourceColumns[0].column.name }}`
-     {% else %}
+     {%- else -%}
         NULL
-     {% endif %}
+     {%- endif -%}
   {% endmacro -%}
-
 name: macro
 type: Macro

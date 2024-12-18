@@ -14,7 +14,7 @@ does not permit copying or modification for any other purpose.
 {% for test in node.tests if config.testsEnabled %}
         {% if test.runOrder == 'Before' %}
             {{ test_stage(test.name, test.continueOnFailure) }}
-            {{ test.templateString  | replace('"', '`')}}
+            {{ test.templateString | replace('"', '`') }}
         {% endif %}
     {% endfor %}
 
@@ -53,8 +53,8 @@ does not permit copying or modification for any other purpose.
                     DISTINCT
                     {% endif %}
                     {% for col in source.columns %}
-                        {{ get_source_transform_dbx(col)  | replace('"', '`') }} AS `{{ col.name }}`
-                        {%- if not loop.last %}, {% endif %}
+                        {{ get_source_transform(col) }} AS `{{ col.name }}`
+                        {%- if not loop.last %}, {%- endif -%}
                     {% endfor %}
                     {{ source.join }}
                     {% if config.groupByAll %}
@@ -69,9 +69,9 @@ does not permit copying or modification for any other purpose.
                     AS `SRC`
                 ON
                 {% for col in columns if col.isBusinessKey -%}
-                    {% if not loop.first %}
+                    {%- if not loop.first -%}
                         AND
-                    {% endif %}
+                    {%- endif -%}
                     `SRC`.`{{ col.name }}` = `TGT`.`{{ col.name }}`
                 {% endfor %}
                 WHEN MATCHED
@@ -84,27 +84,27 @@ does not permit copying or modification for any other purpose.
                         OR
                     {% endif %}
                     NVL( CAST(`SRC`.`{{ col.name }}` as STRING), '**NULL**') <> NVL( CAST(`TGT`.`{{ col.name }}` as STRING), '**NULL**')
-                    {% if loop.last %}
+                    {%- if loop.last -%}
                         )
-                    {% endif %}
+                    {%- endif -%}
                 {% endfor %}
 
                 THEN UPDATE SET
                 {%- for col in columns if not (col.isBusinessKey or col.isSystemCreateDate) %}
                         `TGT`.`{{ col.name }}` = `SRC`.`{{ col.name }}`
-                    {% if not loop.last %}, {% endif %}
+                    {%- if not loop.last -%}, {%- endif -%}
                 {% endfor %}
                 WHEN NOT MATCHED THEN
                 INSERT (
                 {%- for col in columns if not col.isSurrogateKey %}
                     `{{ col.name }}`
-                    {% if not loop.last %}, {% endif %}
+                    {%- if not loop.last -%}, {%- endif -%}
                 {% endfor -%}
                 )
                 VALUES (
                 {%- for col in columns if not col.isSurrogateKey %}
                     `SRC`.`{{ col.name }}`
-                    {% if not loop.last %}, {% endif %}
+                    {%- if not loop.last -%}, {%- endif -%}
                 {% endfor -%}
                 )
         
@@ -118,7 +118,7 @@ does not permit copying or modification for any other purpose.
                     (
                         {% for col in columns %}
                             `{{ col.name }}`
-                            {%- if not loop.last -%},{% endif %}
+                            {%- if not loop.last -%},{%- endif -%}
                         {% endfor %}
                     )
                 {% for source in sources %}
@@ -127,8 +127,8 @@ does not permit copying or modification for any other purpose.
                     DISTINCT
                     {% endif %}
                     {% for col in source.columns %}
-                        {{ get_source_transform_dbx(col)  | replace('"', '`') }} AS `{{ col.name }}`
-                        {%- if not loop.last -%}, {% endif %}
+                        {{ get_source_transform(col) }} AS `{{ col.name }}`
+                        {%- if not loop.last -%}, {%- endif -%}
                     {% endfor %}
                     {{ source.join }}
                  {% if config.groupByAll %}
@@ -155,14 +155,14 @@ does not permit copying or modification for any other purpose.
         {% for test in node.tests %}
             {% if test.runOrder == 'After' %}
                 {{ test_stage(test.name, test.continueOnFailure) }}
-                {{ test.templateString  | replace('"', '`')}}
+                {{ test.templateString | replace('"', '`') }}
             {% endif %}
         {% endfor %}
 
         {% for column in columns %}
             {% for test in column.tests %}
                 {{ test_stage(column.name + ": " + test.name) }}
-                {{ test.templateString  | replace('"', '`')}}
+                {{ test.templateString | replace('"', '`') }}
             {% endfor %}
         {% endfor %}
     {% endif %}

@@ -2,7 +2,7 @@ fileVersion: 1
 id: "77"
 isDisabled: false
 metadata:
-  defaultStorageLocation: DWH
+  defaultStorageLocation: GOLD
   error: null
   nodeMetadataSpec: |
     capitalized: Databricks Fact
@@ -115,5 +115,5 @@ metadata:
       dataType: TIMESTAMP
       placement: end
       attributeName: isSystemUpdateDate
-name: DBx Fact
+name: DBx Fact1
 type: NodeType

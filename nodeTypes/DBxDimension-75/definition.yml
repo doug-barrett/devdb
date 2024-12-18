@@ -2,7 +2,7 @@ fileVersion: 1
 id: "75"
 isDisabled: false
 metadata:
-  defaultStorageLocation: DWH
+  defaultStorageLocation: GOLD
   error: null
   nodeMetadataSpec: |
     capitalized: Databricks Dimension 

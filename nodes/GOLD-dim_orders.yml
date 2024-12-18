@@ -18,7 +18,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: STAGE
+  locationName: GOLD
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -321,14 +321,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          stg_orders: d567129d-8e4c-4b46-9dd0-fe09ab831ad1
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: STAGE
+          - locationName: SILVER
             nodeName: stg_orders
         join:
-          joinCondition: FROM {{ ref('STAGE', 'stg_orders') }} `stg_orders`
+          joinCondition: FROM {{ ref('SILVER', 'stg_orders') }} `stg_orders`
         name: dim_orders
         noLinkRefs: []
   name: dim_orders

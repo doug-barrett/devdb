@@ -1,11 +1,11 @@
 fileVersion: 1
-id: Fact
-isDisabled: true
+id: "79"
+isDisabled: false
 metadata:
   defaultStorageLocation: GOLD
   error: null
   nodeMetadataSpec: |
-    capitalized: Fact
+    capitalized: DBx Fact
     plural: Facts
     short: fct
     tagColor: '#D9A438'
@@ -115,5 +115,5 @@ metadata:
       dataType: TIMESTAMP
       placement: end
       attributeName: isSystemUpdateDate
-name: Fact
+name: DBx Fact
 type: NodeType

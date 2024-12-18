@@ -6,7 +6,7 @@ operation:
   dataset: ""
   deployEnabled: true
   description: ""
-  locationName: SRC
+  locationName: BRONZE
   metadata:
     columns: []
     join:

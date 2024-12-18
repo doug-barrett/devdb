@@ -12,7 +12,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: STAGE
+  locationName: SILVER
   materializationType: table
   metadata:
     appliedNodeTests:
@@ -279,18 +279,18 @@ operation:
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: SRC
+          - locationName: BRONZE
             nodeName: customer
-          - locationName: SRC
+          - locationName: BRONZE
             nodeName: nation
-          - locationName: SRC
+          - locationName: BRONZE
             nodeName: region
         join:
           joinCondition: |-
-            FROM {{ ref('SRC', 'customer') }} `customer`
-            INNER JOIN {{ ref('SRC', 'nation') }} `nation`
+            FROM {{ ref('BRONZE', 'customer') }} `customer`
+            INNER JOIN {{ ref('BRONZE', 'nation') }} `nation`
             ON `customer`.c_nationkey = `nation`.n_nationkey
-            INNER JOIN {{ ref('SRC', 'region') }} `region`
+            INNER JOIN {{ ref('BRONZE', 'region') }} `region`
             ON nation.n_regionkey = `region`.r_regionkey
         name: stg_customer
         noLinkRefs: []

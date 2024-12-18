@@ -12,7 +12,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: STAGE
+  locationName: SILVER
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -375,14 +375,14 @@ operation:
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: SRC
+          - locationName: BRONZE
             nodeName: lineitem
-          - locationName: SRC
+          - locationName: BRONZE
             nodeName: orders
         join:
           joinCondition: |-
-            FROM {{ ref('SRC', 'lineitem') }} `lineitem`
-            INNER JOIN {{ ref('SRC', 'orders') }} `orders`
+            FROM {{ ref('BRONZE', 'lineitem') }} `lineitem`
+            INNER JOIN {{ ref('BRONZE', 'orders') }} `orders`
             ON `lineitem`.l_orderkey = `orders`.o_orderkey
         name: stg_lineitem_orders
         noLinkRefs: []

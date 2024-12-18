@@ -51,10 +51,9 @@ does not permit copying or modification for any other purpose.
             {{ stage(insertStrategy + ' Sources' | string ) }}
             INSERT INTO {{ ref_no_link(node.location.name, node.name) }}
                 (
-                    {% for col in columns %}
-                        `{{ col.name }}`
-                        {%- if not loop.last -%},{% endif %}
-                    {% endfor %}
+                    {%- for col in columns -%}
+                        `{{ col.name }}` {%- if not loop.last -%},{%- endif -%}
+                    {%- endfor -%}
                 )
         {% endif %}
 
@@ -68,9 +67,8 @@ does not permit copying or modification for any other purpose.
 
                 INSERT INTO {{ ref_no_link(node.location.name, node.name) }}
                 (
-                    {% for col in source.columns %}
-                        `{{ col.name }}`
-                        {%- if not loop.last -%},{% endif %}
+                    {% for col in columns %}
+                        `{{ col.name }}` {%- if not loop.last -%},{%- endif -%}
                     {% endfor %}
                 )
             {% endif %}
@@ -80,8 +78,8 @@ does not permit copying or modification for any other purpose.
             DISTINCT
             {% endif %}
             {% for col in source.columns %}
-                {{ get_source_transform_dbx(col)  | replace('"', '`') }} AS `{{ col.name }}`
-                {%- if not loop.last -%}, {% endif %}
+                {{ get_source_transform(col) }} AS `{{ col.name }}`
+                {%- if not loop.last -%}, {%- endif -%}
             {% endfor %}
 
                 {{ source.join }}

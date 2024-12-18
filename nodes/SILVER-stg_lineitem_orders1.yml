@@ -12,7 +12,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: STAGE
+  locationName: SILVER
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -403,25 +403,25 @@ operation:
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: STAGE
+          - locationName: GOLD
             nodeName: dim_customer
-          - locationName: STAGE
+          - locationName: GOLD
             nodeName: dim_supplier
-          - locationName: STAGE
+          - locationName: SILVER
             nodeName: stg_lineitem_orders
         join:
           joinCondition: |-
-            FROM {{ ref('STAGE', 'stg_lineitem_orders') }} `stg_lineitem_orders`
-            INNER JOIN {{ ref('STAGE', 'dim_customer') }} `dim_customer`
+            FROM {{ ref('SILVER', 'stg_lineitem_orders') }} `stg_lineitem_orders`
+            INNER JOIN {{ ref('GOLD', 'dim_customer') }} `dim_customer`
             ON `stg_lineitem_orders`.o_custkey = `dim_customer`.c_custkey
-            INNER JOIN {{ ref('STAGE', 'dim_supplier') }} `dim_supplier`
+            INNER JOIN {{ ref('GOLD', 'dim_supplier') }} `dim_supplier`
             ON `stg_lineitem_orders`.l_suppkey= `dim_supplier`.s_suppkey
         name: stg_lineitem_orders1
         noLinkRefs: []
   name: stg_lineitem_orders1
   overrideSQL: false
   schema: ""
-  sqlType: Stage
+  sqlType: "76"
   type: sql
   version: 1
 type: Node

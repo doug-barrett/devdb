@@ -18,7 +18,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: DWH
+  locationName: GOLD
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -30,6 +30,7 @@ operation:
         config: {}
         dataType: LONG
         description: ""
+        isBusinessKey: true
         name: o_orderkey
         nullable: true
         sourceColumnReferences:
@@ -226,6 +227,7 @@ operation:
         config: {}
         dataType: INT
         description: ""
+        isBusinessKey: true
         name: l_linenumber
         nullable: true
         sourceColumnReferences:
@@ -438,20 +440,21 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          stg_lineitem_orders1: bd7f20ae-3402-4510-a715-472dc8fcd667
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: STAGE
+          - locationName: SILVER
             nodeName: stg_lineitem_orders1
         join:
-          joinCondition: FROM {{ ref('STAGE', 'stg_lineitem_orders1') }} `stg_lineitem_orders1`
+          joinCondition: FROM {{ ref('SILVER', 'stg_lineitem_orders1') }} `stg_lineitem_orders1`
         name: fct_lineitem_orders1
         noLinkRefs: []
   name: fct_lineitem_orders1
   overrideSQL: false
   schema: ""
-  sqlType: "77"
+  sqlType: "79"
   type: sql
   version: 1
 type: Node
