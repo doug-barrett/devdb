@@ -2,5 +2,5 @@ excludeSelector: ""
 fileVersion: 1
 id: "36"
 includeSelector: "{ location: BRONZE name: region }"
-name: Small jon
+name: Small job
 type: Job
