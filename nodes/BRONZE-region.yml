@@ -1,5 +1,5 @@
 fileVersion: 1
-id: 0d77d644-c76d-4458-8051-00c6d255b94d
+id: 858d0bb7-97b0-4d2c-8036-d136fefcbeaa
 name: region
 operation:
   database: ""
@@ -14,8 +14,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: dd237c4a-821c-4e86-94f1-7947d064a09d
-          stepCounter: 0d77d644-c76d-4458-8051-00c6d255b94d
+          columnCounter: 88fdd891-d37b-4422-bffe-e0535f4ffe08
+          stepCounter: 858d0bb7-97b0-4d2c-8036-d136fefcbeaa
         config: {}
         dataType: LONG
         defaultValue: ""
@@ -31,8 +31,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: c391a269-8a05-492d-bcc9-486981793563
-          stepCounter: 0d77d644-c76d-4458-8051-00c6d255b94d
+          columnCounter: 281cfa3e-c2ed-47e6-ad22-1fc891ce40f0
+          stepCounter: 858d0bb7-97b0-4d2c-8036-d136fefcbeaa
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -48,8 +48,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: d6d38b7e-0f8d-47eb-8ea9-06e13e5df0f3
-          stepCounter: 0d77d644-c76d-4458-8051-00c6d255b94d
+          columnCounter: 15a87316-e6bc-4fec-863f-cb06b3058bf0
+          stepCounter: 858d0bb7-97b0-4d2c-8036-d136fefcbeaa
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -61,7 +61,7 @@ operation:
             transform: ""
         transform: ""
     join:
-      joinCondition: FROM {{ ref('SRC', 'region') }}
+      joinCondition: FROM {{ ref('BRONZE', 'region') }}
   name: region
   schema: ""
   sqlType: Source

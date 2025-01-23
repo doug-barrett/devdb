@@ -1,5 +1,5 @@
 fileVersion: 1
-id: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+id: df763815-8f90-473d-b9f1-6a9f48b47bd5
 name: stg_customer
 operation:
   config:
@@ -15,267 +15,205 @@ operation:
   locationName: SILVER
   materializationType: table
   metadata:
-    appliedNodeTests:
-      - continueOnFailure: true
-        description: ""
-        name: Test
-        runOrder: After
-        templateString: |-
-          SELECT 1
-          FROM {{this}}
-          WHERE c_name like 'test%'
+    appliedNodeTests: []
     columns:
-      - appliedColumnTests:
-          hasNull: true
-          isDistinct: true
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: b0d4c27e-e098-48ff-bc30-9eb26c9f8fcc
-          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          columnCounter: 856b66ce-400c-41b9-b7ba-57e0548f3ee1
+          stepCounter: df763815-8f90-473d-b9f1-6a9f48b47bd5
         config: {}
         dataType: LONG
-        description: ""
+        description: |-
+          - This column represents the primary key for the customer table and is a foreign key for other tables that reference customer information. 
+          - It is sourced directly from the 'customer' table in the BRONZE zone and is used in various downstream applications like customer segmentation reports. 
+          -  It represents a unique identifier for each customer in the database. It's a LONG datatype.
         name: c_custkey
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: d94f52b0-d13c-41eb-96cb-530939148e7c
-                stepCounter: f7eec55b-ffb8-4e4f-ad20-c0dc9d1c9357
+              - columnCounter: 091e616c-43f1-4217-92c9-47c38c8f8370
+                stepCounter: eb937193-c0b0-4683-bc15-38382d3301c6
             transform: ""
-      - appliedColumnTests:
-          hasNull: false
-          isDistinct: false
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: f2232aeb-d161-4e2a-af62-eb3fca0bceec
-          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          columnCounter: 525d7e07-d702-4f26-9636-1eae3cd97933
+          stepCounter: df763815-8f90-473d-b9f1-6a9f48b47bd5
         config: {}
         dataType: STRING
-        description: ""
+        description: |-
+          - This column stores the customer's name, which is obtained directly from the 'customer' table in the BRONZE zone. 
+          - It is used in reports and dashboards that analyze customer demographics and is crucial for identifying individual customers. 
+          - It's a STRING datatype.
         name: c_name
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 103be586-3f20-483e-b1fa-e52a7269d2ee
-                stepCounter: f7eec55b-ffb8-4e4f-ad20-c0dc9d1c9357
+              - columnCounter: 2d34ee70-91d9-483a-845b-ed7333e526a3
+                stepCounter: eb937193-c0b0-4683-bc15-38382d3301c6
             transform: ""
-      - appliedColumnTests:
-          hasNull: false
-          isDistinct: false
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: a02fac06-2ffb-40b3-b4e9-a14c11d0b4f6
-          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          columnCounter: 69f31543-6afd-4cbe-852e-1a60900dd095
+          stepCounter: df763815-8f90-473d-b9f1-6a9f48b47bd5
         config: {}
         dataType: STRING
-        description: ""
+        description: |-
+          - This column represents the customer's address, sourced directly from the 'customer' table in the BRONZE zone. 
+          -  It's used in reports and dashboards that analyze customer demographics, marketing campaigns, and geographic trends. 
+          - It's a STRING datatype.
         name: c_address
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: bd8febd0-f267-4dea-aa49-9693558357b1
-                stepCounter: f7eec55b-ffb8-4e4f-ad20-c0dc9d1c9357
+              - columnCounter: be2ccec8-deee-43d4-a761-d2c3a9982e00
+                stepCounter: eb937193-c0b0-4683-bc15-38382d3301c6
             transform: ""
-      - appliedColumnTests:
-          hasNull: false
-          isDistinct: false
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: b13b3ea4-ecfb-4aac-a86f-5ae5b937a4ac
-          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          columnCounter: 3457908f-845a-403c-96de-160552fa3487
+          stepCounter: df763815-8f90-473d-b9f1-6a9f48b47bd5
         config: {}
         dataType: LONG
-        description: ""
+        description: |-
+          - This column represents the foreign key referencing the 'nation' table, allowing us to link customer data with their corresponding nation. 
+          - It's sourced from the 'customer' table in the BRONZE zone and used in various downstream applications like sales analysis by country and customer segmentation based on location. 
+          - It's a LONG datatype.
         name: c_nationkey
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: a574d029-aba6-4ebb-a065-2664f98f2f55
-                stepCounter: f7eec55b-ffb8-4e4f-ad20-c0dc9d1c9357
+              - columnCounter: 451ccd81-b0e9-49ce-9b6e-1e9d7151a840
+                stepCounter: eb937193-c0b0-4683-bc15-38382d3301c6
             transform: ""
-      - appliedColumnTests:
-          hasNull: false
-          isDistinct: false
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: 449c9329-2a19-4db5-b500-452b8e0680f5
-          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          columnCounter: ec932abf-e131-4a0f-8932-812ceb33f7d0
+          stepCounter: df763815-8f90-473d-b9f1-6a9f48b47bd5
         config: {}
         dataType: STRING
-        description: ""
+        description: |-
+          - This column stores the customer's phone number, obtained directly from the 'customer' table in the BRONZE zone. 
+          - It is used for various purposes, including customer support, marketing campaigns, and order fulfillment. 
+          - It's a STRING datatype.
         name: c_phone
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: b1f3197e-29ff-4c8c-887f-1234fce64e46
-                stepCounter: f7eec55b-ffb8-4e4f-ad20-c0dc9d1c9357
+              - columnCounter: 6e14bd2b-3710-44ae-a3ba-235ec4da869d
+                stepCounter: eb937193-c0b0-4683-bc15-38382d3301c6
             transform: ""
-      - appliedColumnTests:
-          hasNull: false
-          isDistinct: false
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: d5959bcf-5653-4a78-bd22-180593ef063d
-          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          columnCounter: 89476078-8893-4d9c-846c-9eb99b4ccaae
+          stepCounter: df763815-8f90-473d-b9f1-6a9f48b47bd5
         config: {}
         dataType: DECIMAL
-        description: ""
+        description: |-
+          - This column represents the customer's account balance, sourced directly from the 'customer' table in the BRONZE zone. 
+          - It is used in various downstream applications like customer credit scoring, revenue analysis, and financial reporting. 
+          - It's a DECIMAL datatype.
         name: c_acctbal
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 089b8e25-af7e-44bd-959c-b69213079c27
-                stepCounter: f7eec55b-ffb8-4e4f-ad20-c0dc9d1c9357
+              - columnCounter: 3509bb74-d049-41c6-89e8-07254ece5c12
+                stepCounter: eb937193-c0b0-4683-bc15-38382d3301c6
             transform: ""
-      - appliedColumnTests:
-          hasNull: false
-          isDistinct: false
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: 7a0c4833-3cb3-4969-8efd-f072ac1632bf
-          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          columnCounter: 044af352-519d-4752-b4a8-46d28f86246c
+          stepCounter: df763815-8f90-473d-b9f1-6a9f48b47bd5
         config: {}
         dataType: STRING
-        description: ""
+        description: |-
+          - This column categorizes customer account balances into 'High' or 'Low' based on a threshold of 5000. 
+          - The logic is applied using a CASE statement based on the 'c_acctbal' column from the 'customer' table. 
+          - It's a STRING datatype.
         name: c_acctbal_cat
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 089b8e25-af7e-44bd-959c-b69213079c27
-                stepCounter: f7eec55b-ffb8-4e4f-ad20-c0dc9d1c9357
+              - columnCounter: 3509bb74-d049-41c6-89e8-07254ece5c12
+                stepCounter: eb937193-c0b0-4683-bc15-38382d3301c6
             transform: |-
-              CASE WHEN "customer"."c_acctbal" > 1000 THEN 'High'
-              ELSE 'Low'
-              END
-      - appliedColumnTests:
-          hasNull: false
-          isDistinct: false
+              case when customer.c_acctbal > 5000 then 'High'
+              else 'Low'
+              end
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: 0ce12fce-5abc-4742-8505-d862a39f3d6b
-          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          columnCounter: d68a4831-712b-4763-900f-604e3bd9aa0b
+          stepCounter: df763815-8f90-473d-b9f1-6a9f48b47bd5
         config: {}
         dataType: STRING
-        description: ""
+        description: |-
+          - This column represents the customer's market segment, sourced directly from the 'customer' table in the BRONZE zone. 
+          - It is used for targeted marketing campaigns, customer segmentation, and revenue analysis based on customer behavior. 
+          - It's a STRING datatype.
         name: c_mktsegment
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: b31d8b56-f561-4715-9d38-7e89ae0d7b3e
-                stepCounter: f7eec55b-ffb8-4e4f-ad20-c0dc9d1c9357
+              - columnCounter: c47b7cae-6565-4d9c-bcf6-fb744fec48b7
+                stepCounter: eb937193-c0b0-4683-bc15-38382d3301c6
             transform: ""
-      - appliedColumnTests:
-          hasNull: false
-          isDistinct: false
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: 2a8ec892-1c15-40a1-bb84-e28fc1b3495a
-          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          columnCounter: be55dd13-46b6-4206-9a59-d81f7ea7b6bd
+          stepCounter: df763815-8f90-473d-b9f1-6a9f48b47bd5
         config: {}
         dataType: STRING
-        description: ""
+        description: |-
+          - This column holds free-form comments about the customer, sourced directly from the 'customer' table in the BRONZE zone. 
+          - It is used for customer support, account management, and internal communication. 
+          - It's a STRING datatype.
         name: c_comment
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 8c50c17e-e59b-4c6a-ab20-c227f4b33c78
-                stepCounter: f7eec55b-ffb8-4e4f-ad20-c0dc9d1c9357
+              - columnCounter: 7411d36a-c0cf-4a38-88a7-6b9379d60164
+                stepCounter: eb937193-c0b0-4683-bc15-38382d3301c6
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 8f8372b4-f205-4baf-ba67-0acc25dfdfba
-          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          columnCounter: d63a843c-9f9a-461b-acb1-ce18bae7a910
+          stepCounter: df763815-8f90-473d-b9f1-6a9f48b47bd5
         config: {}
         dataType: STRING
-        description: ""
+        description: |-
+          - This column represents the name of the nation, sourced directly from the 'nation' table in the BRONZE zone. 
+          - It is used in various downstream applications like sales analysis by country, customer segmentation based on location, and international market reports. 
+          - It's a STRING datatype.
         name: n_name
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 224a6106-41e9-4c5c-af47-6fdae6958bab
-                stepCounter: f3a4df61-0dcc-4922-826a-a1649d1514b1
+              - columnCounter: bc164795-61d0-4e2e-8f36-0f7361cae203
+                stepCounter: 2535c35c-badf-455e-b876-7e3568f095ba
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 928ddf3b-d4d4-4d57-8ebd-30f6d545a25b
-          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
+          columnCounter: 03d5a332-6d81-4b99-baa4-d435a25f9fe9
+          stepCounter: df763815-8f90-473d-b9f1-6a9f48b47bd5
         config: {}
         dataType: STRING
-        description: ""
-        name: n_comment
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: e645c7d2-954b-4116-bca5-2dd7a63b53b2
-                stepCounter: f3a4df61-0dcc-4922-826a-a1649d1514b1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8b75cde5-7416-4aaa-899b-80e0f554c37e
-          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-        config: {}
-        dataType: STRING
-        description: ""
+        description: |-
+          - This column represents the name of the region, sourced directly from the 'region' table in the BRONZE zone. 
+          - It is used in various downstream applications like sales analysis by region, customer segmentation based on geographic location, and regional market reports. 
+          - It's a STRING datatype.
         name: r_name
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: c391a269-8a05-492d-bcc9-486981793563
-                stepCounter: 0d77d644-c76d-4458-8051-00c6d255b94d
+              - columnCounter: 281cfa3e-c2ed-47e6-ad22-1fc891ce40f0
+                stepCounter: 858d0bb7-97b0-4d2c-8036-d136fefcbeaa
             transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 18bc57c7-cf92-487b-ba09-c1bd08d22ca5
-          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-        config: {}
-        dataType: STRING
-        description: ""
-        name: r_comment
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: d6d38b7e-0f8d-47eb-8ea9-06e13e5df0f3
-                stepCounter: 0d77d644-c76d-4458-8051-00c6d255b94d
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: b660abfc-9b9c-4aeb-9559-be1c35481a9b
-          stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        hashDetails:
-          hashAlgorithm: SHA1
-        hashedColumns:
-          - columnCounter: f2232aeb-d161-4e2a-af62-eb3fca0bceec
-            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-          - columnCounter: a02fac06-2ffb-40b3-b4e9-a14c11d0b4f6
-            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-          - columnCounter: b13b3ea4-ecfb-4aac-a86f-5ae5b937a4ac
-            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-          - columnCounter: 449c9329-2a19-4db5-b500-452b8e0680f5
-            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-          - columnCounter: d5959bcf-5653-4a78-bd22-180593ef063d
-            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-          - columnCounter: 7a0c4833-3cb3-4969-8efd-f072ac1632bf
-            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-          - columnCounter: 0ce12fce-5abc-4742-8505-d862a39f3d6b
-            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-          - columnCounter: 2a8ec892-1c15-40a1-bb84-e28fc1b3495a
-            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-          - columnCounter: 8f8372b4-f205-4baf-ba67-0acc25dfdfba
-            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-          - columnCounter: 928ddf3b-d4d4-4d57-8ebd-30f6d545a25b
-            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-          - columnCounter: 8b75cde5-7416-4aaa-899b-80e0f554c37e
-            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-          - columnCounter: 18bc57c7-cf92-487b-ba09-c1bd08d22ca5
-            stepCounter: d32a899d-3c83-48de-9b9f-010bcdc38ccc
-        name: GH
-        nullable: true
-        sourceColumnReferences: []
     cteString: ""
-    enabledColumnTestIDs:
-      - hasNull
-      - isDistinct
+    enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          customer: f7eec55b-ffb8-4e4f-ad20-c0dc9d1c9357
+          customer: eb937193-c0b0-4683-bc15-38382d3301c6
+          nation: 2535c35c-badf-455e-b876-7e3568f095ba
+          region: 858d0bb7-97b0-4d2c-8036-d136fefcbeaa
         customSQL:
           customSQL: ""
         dependencies:
@@ -289,7 +227,7 @@ operation:
           joinCondition: |-
             FROM {{ ref('BRONZE', 'customer') }} `customer`
             INNER JOIN {{ ref('BRONZE', 'nation') }} `nation`
-            ON `customer`.c_nationkey = `nation`.n_nationkey
+            ON `customer`.`c_nationkey` = `nation`.n_nationkey
             INNER JOIN {{ ref('BRONZE', 'region') }} `region`
             ON nation.n_regionkey = `region`.r_regionkey
         name: stg_customer

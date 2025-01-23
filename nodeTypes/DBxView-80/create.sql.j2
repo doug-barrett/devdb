@@ -26,11 +26,11 @@ does not permit copying or modification for any other purpose.
     (
         {% for col in columns %}
             `{{ col.name }}`
-            {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
+            {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape | replace("'","`") }}'{% endif %}
             {%- if not loop.last -%}, {% endif %}
         {% endfor %}
     )
-    {%- if node.description | length > 0 %} COMMENT  '{{ node.description | escape }}'{% endif %}
+    {%- if node.description | length > 0 %} COMMENT  '{{ node.description | escape | replace("'","`") }}'{% endif %}
     AS
     {% for source in sources %}
         SELECT {% if config.selectDistinct %} DISTINCT {% endif %}
