@@ -1,0 +1,105 @@
+fileVersion: 1
+id: 4de98b5b-d618-462b-82ec-b9aee3b2ccb6
+name: partsupp
+operation:
+  database: ""
+  dataset: ""
+  deployEnabled: true
+  description: ""
+  locationName: BRONZE
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7e8da085-5e82-47db-8246-2f8bc8ee964a
+          stepCounter: 4de98b5b-d618-462b-82ec-b9aee3b2ccb6
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: ps_partkey
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 64d8600d-79b7-4fd0-9067-81f138d1e25c
+          stepCounter: 4de98b5b-d618-462b-82ec-b9aee3b2ccb6
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: ps_suppkey
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 63743ffc-e8f3-4c03-9899-c71ac3379f16
+          stepCounter: 4de98b5b-d618-462b-82ec-b9aee3b2ccb6
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: ps_availqty
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3a92a2c4-adf3-4b47-a50c-da55c8950585
+          stepCounter: 4de98b5b-d618-462b-82ec-b9aee3b2ccb6
+        config: {}
+        dataType: DECIMAL
+        defaultValue: ""
+        description: ""
+        name: ps_supplycost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ca83180a-b626-4948-82ee-2ae5f852cf2e
+          stepCounter: 4de98b5b-d618-462b-82ec-b9aee3b2ccb6
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: ps_comment
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+    join:
+      joinCondition: FROM {{ ref('BRONZE', 'partsupp') }}
+  name: partsupp
+  schema: ""
+  sqlType: Source
+  table: partsupp
+  type: sourceInput
+  version: 1
+type: Node
